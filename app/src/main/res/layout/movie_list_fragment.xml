@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.rs.flickd.ui.fragments.HomeFragment">
+
+    <data>
+
+        <variable
+            name="moviesList"
+            type="com.rs.flickd.viewModels.TmdbNowPlayingMoviesViewModel" />
+
+        <variable
+            name="isLoading"
+            type="boolean" />
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.rs.flickd.widgets.MoviesListRecycleView
+                android:id="@+id/movieListRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listItem="">
+
+            </com.rs.flickd.widgets.MoviesListRecycleView>
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <ProgressBar
+            android:id="@+id/loadingProgressBar"
+            style="?android:progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:visibleGone="@{isLoading}" />
+
+    </FrameLayout>
+
+</layout>

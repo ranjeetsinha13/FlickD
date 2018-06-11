@@ -1,0 +1,129 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    compileSdkVersion 'android-P'
+    defaultConfig {
+        applicationId "com.rs.flickd"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    def API_KEY_VALUE = project.ext.properties.TMDB_API_KEY
+    API_KEY_VALUE = API_KEY_VALUE == null ? "\"\"" : API_KEY_VALUE
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            buildConfigField "String", "API_KEY", API_KEY_VALUE
+        }
+        debug {
+            minifyEnabled false
+            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
+            multiDexEnabled true
+            buildConfigField "String", "API_KEY", API_KEY_VALUE
+
+
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    def lifecycle_version = "2.0.0-alpha1"
+    //Navigation package currently depends on 27.1
+    def appcompat_version = "1.0.0-alpha1"
+    def room_version = "2.0.0-alpha1"
+    def paging_version = "2.0.0-alpha1"
+    def nav_version = "1.0.0-alpha01"
+    def work_version = "1.0.0-alpha02"
+    def firebase_core_version = "16.0.0"
+    def firebase_auth_version = "16.0.1"
+    def google_play_services_version = "15.0.1"
+    def dagger_version = "2.15"
+    def anko_version = "0.10.5"
+    def okhttp_version = '3.8.1'
+    def retrofit_version = '2.3.0'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "com.google.android.material:material:$appcompat_version"
+
+    //ViewModel and LifeCycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
+    implementation 'com.google.android.material:material:1.0.0-alpha1'
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    //Room
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    //Paging
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    //Navigation
+    //implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version"
+    //implementation "android.arch.navigation:navigation-ui-ktx:$nav_version"
+
+    //WorkManager
+    //implementation "android.arch.work:work-runtime-ktx:$work_version"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-core:$firebase_core_version"
+    implementation "com.firebaseui:firebase-ui-auth:4.0.0"
+    implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
+    implementation "com.google.android.gms:play-services-auth:$google_play_services_version"
+
+    //Logging
+    implementation 'com.jakewharton.timber:timber:4.7.0'
+
+    //Dagger
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    // Facebook Login only
+    implementation 'com.facebook.android:facebook-login:4.33.0'
+
+    //Anko
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+
+    //Network
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+
+}
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FixedAspectRatioImage">
+        <attr name="aspect_ratio" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="MoviesListRecycleView">
+        <attr name="min_cell_width" format="dimension" />
+        <attr name="cell_spacing" format="dimension" />
+    </declare-styleable>
+</resources>

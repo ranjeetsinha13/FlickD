@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">FlickD</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">UserName</string>
+    <string name="nav_header_subtitle">usermail</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Error messages -->
+    <string name="error_signup_cancelled">You need to sign in to use the app</string>
+
+    <!-- navigation drawer strings -->
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="about">About</string>
+    <string name="share">Share</string>
+
+    <!-- Bottom Menu Bar strings -->
+    <string name="now_playing">Now Playing</string>
+    <string name="favorites">Favorites</string>
+    <string name="search">Search</string>
+
+    <string name="version">Version:%1$s</string>
+</resources>
