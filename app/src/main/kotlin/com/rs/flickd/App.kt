@@ -1,17 +1,26 @@
 package com.rs.flickd
 
+import android.app.Activity
 import android.app.Application
 import com.rs.flickd.components.AppComponent
 import com.rs.flickd.components.DaggerAppComponent
 import com.rs.flickd.modules.AppModule
-import com.rs.flickd.modules.DataModule
-import com.rs.flickd.modules.NetworkModule
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
 import timber.log.Timber
+import javax.inject.Inject
 
-class App : Application() {
-    companion object {
-        lateinit var appComponent: AppComponent
+class App : Application(), HasActivityInjector {
+
+    @Inject
+    lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
+
+    private lateinit var appComponent: AppComponent
+    override fun activityInjector(): AndroidInjector<Activity> {
+        return dispatchingActivityInjector
     }
+
 
     override fun onCreate() {
         super.onCreate()
@@ -23,10 +32,8 @@ class App : Application() {
     }
 
     private fun initializeDagger() {
-        appComponent = DaggerAppComponent.builder()
-                .appModule(AppModule(this))
-                .dataModule(DataModule())
-                .networkModule(NetworkModule()).build()
+        appComponent = DaggerAppComponent.builder().appModule(AppModule(this)).build()
+        appComponent.inject(this)
     }
 
 }

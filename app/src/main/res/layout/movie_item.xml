@@ -8,14 +8,50 @@
             name="movie"
             type="com.rs.flickd.viewModels.MovieItemViewModel" />
 
-        <variable
-            name="isLoading"
-            type="boolean" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <com.rs.flickd.widgets.FixedAspectRatioImage
+            android:id="@+id/movieImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:minWidth="@dimen/default_image_width"
+            android:onClick="@{movie::onClickItem}"
+            android:scaleType="centerCrop"
+            app:aspect_ratio="1.5" />
+
+        <RatingBar
+            android:id="@+id/rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|bottom"
+            android:layout_marginStart="@dimen/image_space"
+            android:layout_marginLeft="@dimen/image_space"
+            android:layout_marginBottom="@dimen/image_space"
+            android:alpha="0.6"
+            android:isIndicator="true"
+            android:numStars="5"
+            app:rating="@{movie.rating}"
+            android:stepSize="0.1" />
+
+        <ImageView
+            android:layout_width="@dimen/fav_icon_size"
+            android:layout_height="@dimen/fav_icon_size"
+            android:layout_gravity="end|top"
+            android:layout_marginTop="@dimen/image_space"
+            android:layout_marginEnd="@dimen/image_space"
+            android:layout_marginRight="@dimen/image_space"
+            android:contentDescription="@{movie.title}"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_action_fav"
+            android:tint="@color/colorAccent"
+            app:visibleGone="@{movie.isFavorite}" />
+
     </FrameLayout>
+
 </layout>

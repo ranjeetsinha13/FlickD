@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.rs.flickd.repository.TMDBApiServiceRepo
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class TMDBViewModelFactory @Inject constructor(val tmdbApiServiceRepo: TMDBApiServiceRepo) :
         ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

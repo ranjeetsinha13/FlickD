@@ -11,4 +11,6 @@
     <dimen name="default_image_height">180dp</dimen>
     <dimen name="image_space">4dp</dimen>
 
+    <dimen name="fav_icon_size">20dp</dimen>
+
 </resources>

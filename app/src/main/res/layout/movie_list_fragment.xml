@@ -6,9 +6,9 @@
 
     <data>
 
-        <variable
+        <!--<variable
             name="moviesList"
-            type="com.rs.flickd.viewModels.TmdbNowPlayingMoviesViewModel" />
+            type="com.rs.flickd.viewModels.TmdbNowPlayingMoviesViewModel" />-->
 
         <variable
             name="isLoading"
@@ -26,13 +26,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.rs.flickd.widgets.MoviesListRecycleView
-                android:id="@+id/movieListRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:listItem="">
+            <!-- <com.rs.flickd.widgets.MoviesListRecycleView
+                 android:id="@+id/movieListRecyclerView"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 tools:listItem="@layout/movie_item">
 
-            </com.rs.flickd.widgets.MoviesListRecycleView>
+             </com.rs.flickd.widgets.MoviesListRecycleView>-->
 
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
